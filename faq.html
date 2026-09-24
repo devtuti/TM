@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часто задаваемые вопросы - Тюркан Маммедли</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #667eea !important;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* ===== FAQ CARD ===== */
+        .faq-card {
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .faq-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        /* Card 1 - Mavi */
+        .faq-card.domain {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Card 2 - Yaşıl */
+        .faq-card.hosting {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        /* Card 3 - Narıncı/Qırmızı */
+        .faq-card.seo {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        /* Card 4 - Bənövşəyi */
+        .faq-card.admin {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+        }
+
+        /* ===== FAQ HEADER (Sual hissəsi) ===== */
+        .faq-header {
+            padding: 2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        .faq-card.active .faq-icon {
+            transform: rotate(360deg);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .faq-question {
+            flex: 1;
+        }
+
+        .faq-question h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-question .faq-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        .faq-toggle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-card.active .faq-toggle {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== FAQ BODY (Cavab hissəsi - Pərdə effekti) ===== */
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .faq-card.active .faq-body {
+           max-height: var(--faq-height, 1500px);
+        }
+
+        .faq-answer {
+            background: white;
+            padding: 2rem 2.5rem;
+            position: relative;
+        }
+
+        /* Pərdə qalxan effekti - yuxarıdan gradient keçid */
+        .faq-answer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: curtainRise 0.6s ease forwards;
+        }
+
+        @keyframes curtainRise {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .faq-answer h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-answer h4 i {
+            color: #667eea;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer .example-box {
+            background: var(--bg-light);
+            border-left: 4px solid #667eea;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-answer .example-box strong {
+            color: var(--primary-color);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: #667eea !important;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #667eea !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        /* ===== MOBİL OPTİMİZASİYA ===== */
+@media (max-width: 768px) {
+    .page-hero h1 { 
+        font-size: 2rem; 
+    }
+    
+    .section-title { 
+        font-size: 1.8rem; 
+    }
+    
+    .faq-header {
+        padding: 1.2rem;
+        gap: 0.8rem;
+        flex-wrap: nowrap;
+    }
+    
+    .faq-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
+    
+    .faq-question h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    .faq-question .faq-hint {
+        font-size: 0.8rem;
+    }
+    
+    .faq-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+    
+    .faq-answer {
+        padding: 1.2rem;
+    }
+    
+    .faq-answer h4 {
+        font-size: 1rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .faq-answer .example-box {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer .example-box br {
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-header {
+        padding: 1rem;
+        gap: 0.7rem;
+    }
+    
+    .faq-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .faq-question h3 {
+        font-size: 0.95rem;
+    }
+    
+    .faq-toggle {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .faq-answer {
+        padding: 1rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer code {
+        font-size: 0.85rem;
+        word-break: break-all;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">Обо мне</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#skills">Навыки</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#portfolio">Портфолио</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Цены</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Часто задаваемые вопросы</h1>
+            <p>Здесь собраны ответы на самые популярные вопросы о разработке сайтов, доменах, хостинге, SEO и админ-панелях.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Популярные вопросы</h2>
+            <p class="section-subtitle">Нажмите на вопрос, чтобы увидеть ответ</p>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+
+                    <!-- FAQ 1: Домен -->
+                    <div class="faq-card domain" onclick="toggleFaq(this)">
+                        <div class="faq-header">
+                            <div class="faq-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="faq-question">
+                                <h3>Что такое домен?</h3>
+                                <p class="faq-hint">Нажмите, чтобы узнать подробнее</p>
+                            </div>
+                            <div class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-answer">
+                                <h4><i class="fas fa-lightbulb"></i> Простое объяснение</h4>
+                                <p>
+                                    <strong>Домен</strong> — это адрес вашего сайта в интернете, по которому его находят пользователи. 
+                                    Если представить интернет как огромный город, то домен — это адрес вашего дома на этом сайте.
+                                </p>
+                                <p>
+                                    Без домена пользователям пришлось бы запоминать длинные числа (IP-адреса), например 
+                                    <code>192.168.1.1</code>. Домен делает адрес простым и запоминающимся.
+                                </p>
+                                <div class="example-box">
+                                    <strong>Примеры доменов:</strong><br>
+                                    • <code>google.com</code> — домен компании Google<br>
+                                    • <code>yandex.ru</code> — домен компании Яндекс<br>
+                                    • <code>myshop.az</code> — домен интернет-магазина
+                                </div>
+                                <p style="margin-top: 1rem;">
+                                    Домены бывают разные: <strong>.com</strong> (международный), <strong>.ru</strong> (Россия), 
+                                    <strong>.az</strong> (Азербайджан), <strong>.org</strong> (организации) и многие другие.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2: Хостинг -->
+                    <div class="faq-card hosting" onclick="toggleFaq(this)">
+                        <div class="faq-header">
+                            <div class="faq-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="faq-question">
+                                <h3>Что такое хостинг?</h3>
+                                <p class="faq-hint">Нажмите, чтобы узнать подробнее</p>
+                            </div>
+                            <div class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-answer">
+                                <h4><i class="fas fa-lightbulb"></i> Простое объяснение</h4>
+                                <p>
+                                    <strong>Хостинг</strong> — это место в интернете, где хранятся все файлы вашего сайта: 
+                                    тексты, картинки, видео, код. Это как аренда квартиры для вашего сайта.
+                                </p>
+                                <p>
+                                    Когда кто-то вводит адрес вашего сайта в браузере, сервер (компьютер хостинг-провайдера) 
+                                    отправляет файлы сайта в браузер пользователя, и он видит ваш сайт.
+                                </p>
+                                <div class="example-box">
+                                    <strong>Аналогия:</strong><br>
+                                    • <strong>Домен</strong> = адрес вашего дома (ул. Пушкина, 10)<br>
+                                    • <strong>Хостинг</strong> = сам дом, где вы живёте<br>
+                                    • <strong>Сайт</strong> = мебель и вещи внутри дома
+                                </div>
+                                <p style="margin-top: 1rem;">
+                                    Хостинг бывает разный: <strong>виртуальный</strong> (дешевле, для небольших сайтов), 
+                                    <strong>VPS</strong> (мощнее, для средних проектов) и <strong>выделенный сервер</strong> 
+                                    (максимальная мощность для крупных сайтов).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3: SEO -->
+                    <div class="faq-card seo" onclick="toggleFaq(this)">
+                        <div class="faq-header">
+                            <div class="faq-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="faq-question">
+                                <h3>Что такое SEO?</h3>
+                                <p class="faq-hint">Нажмите, чтобы узнать подробнее</p>
+                            </div>
+                            <div class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-answer">
+                                <h4><i class="fas fa-lightbulb"></i> Простое объяснение</h4>
+                                <p>
+                                    <strong>SEO</strong> (Search Engine Optimization) — это оптимизация сайта для поисковых 
+                                    систем (Google, Яндекс). Цель SEO — сделать так, чтобы ваш сайт появлялся на первых 
+                                    страницах поиска, когда люди ищут товары или услуги, которые вы предлагаете.
+                                </p>
+                                <p>
+                                    Например, если у вас магазин цветов в Баку, SEO поможет вашему сайту появиться в топе, 
+                                    когда кто-то ищет «купить цветы Баку».
+                                </p>
+                                <div class="example-box">
+                                    <strong>Что включает SEO:</strong><br>
+                                    • <strong>Техническая оптимизация</strong> — скорость сайта, мобильная версия<br>
+                                    • <strong>Контент</strong> — качественные тексты с ключевыми словами<br>
+                                    • <strong>Ссылки</strong> — другие сайты ссылаются на ваш<br>
+                                    • <strong>Мета-теги</strong> — заголовки и описания для поисковиков
+                                </div>
+                                <p style="margin-top: 1rem;">
+                                    SEO — это не разовая работа, а постоянный процесс. Результаты обычно видны через 
+                                    <strong>3-6 месяцев</strong> регулярной работы.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4: Админ-панель -->
+                    <div class="faq-card admin" onclick="toggleFaq(this)">
+                        <div class="faq-header">
+                            <div class="faq-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="faq-question">
+                                <h3>Что такое админ-панель?</h3>
+                                <p class="faq-hint">Нажмите, чтобы узнать подробнее</p>
+                            </div>
+                            <div class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-answer">
+                                <h4><i class="fas fa-lightbulb"></i> Простое объяснение</h4>
+                                <p>
+                                    <strong>Админ-панель</strong> — это специальная страница сайта, доступная только владельцу, 
+                                    где можно управлять всем содержимым сайта без знания программирования.
+                                </p>
+                                <p>
+                                    Представьте, что сайт — это магазин. Админ-панель — это комната за прилавком, где вы 
+                                    можете менять товары, цены, добавлять новые позиции, смотреть заказы и статистику.
+                                </p>
+                                <div class="example-box">
+                                    <strong>Что можно делать в админ-панели:</strong><br>
+                                    • ✏️ Редактировать тексты и статьи<br>
+                                    • 🖼️ Добавлять и менять фотографии<br>
+                                    • 📦 Управлять товарами и ценами<br>
+                                    •  Смотреть статистику посещений<br>
+                                    • 📧 Просматривать заявки от клиентов<br>
+                                    • ⚙️ Менять настройки сайта
+                                </div>
+                                <p style="margin-top: 1rem;">
+                                    Современные админ-панели (например, на базе <strong>Laravel Filament</strong>) 
+                                    очень удобные и интуитивно понятные — разобраться может любой человек без 
+                                    технических знаний.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Остались вопросы?</h2>
+            <p class="lead mb-4 opacity-75">Свяжитесь со мной — я с радостью отвечу на все ваши вопросы!</p>
+            <a href="index.html#contact" class="btn-white">Связаться со мной <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="mb-0">&copy; 2024 Тюркан Маммедли. Все права защищены.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+       // FAQ Toggle функция - pərdə effekti (dinamik hündürlük)
+function toggleFaq(card) {
+    // Əgər bu kart artıq aktivdirsə - bağla
+    if (card.classList.contains('active')) {
+        card.classList.remove('active');
+        card.style.setProperty('--faq-height', '0px');
+        return;
+    }
+
+    // Digər kartları bağla
+    document.querySelectorAll('.faq-card').forEach(c => {
+        c.classList.remove('active');
+        c.style.setProperty('--faq-height', '0px');
+    });
+
+    // Aktiv et
+    card.classList.add('active');
+
+    // Cavab hissəsinin real hündürlüyünü hesabla
+    const faqBody = card.querySelector('.faq-body');
+    const faqAnswer = card.querySelector('.faq-answer');
+    
+    // Real hündürlüyü al (padding daxil)
+    const realHeight = faqAnswer.offsetHeight;
+    
+    // CSS variable olaraq təyin et
+    card.style.setProperty('--faq-height', realHeight + 'px');
+
+    // Kartı görünən yerə scroll et
+    setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const offset = rect.top + window.scrollY - 100;
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }, 100);
+}
+
+// Pəncərə ölçüsü dəyişəndə açıq kartı yenilə
+window.addEventListener('resize', () => {
+    const activeCard = document.querySelector('.faq-card.active');
+    if (activeCard) {
+        const faqAnswer = activeCard.querySelector('.faq-answer');
+        const realHeight = faqAnswer.offsetHeight;
+        activeCard.style.setProperty('--faq-height', realHeight + 'px');
+    }
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+    } else {
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    }
+});
+    </script>
+</body>
+</html>
